@@ -48,7 +48,10 @@ export class LogViewerComponent implements OnInit {
 
   changeTest()
   {
-    this.renderer.setProperty(this.test.nativeElement, 'innerHtml', this.sanitizer.bypassSecurityTrustHtml("<strong>changed<strong>"));
+
+    //this.test.nativeElement.innerText = "<strong>changed<strong>";
+    this.test.nativeElement.innerHtml =  this.sanitizer.bypassSecurityTrustHtml("<strong>changed<strong>");
+    //this.renderer.setProperty(this.test.nativeElement, 'innerHtml', this.sanitizer.bypassSecurityTrustHtml("<strong>changed<strong>"));
     console.log("TEST",this.test.nativeElement.innerHtml)
   }
 }
