@@ -1,0 +1,45 @@
+<button (click)="changealessio()">  Click here to change html</button>
+<div #ciccio>
+  This text should be changed
+</div>
+<mat-vertical-stepper  #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel  #templateLogGroup>Logs Group</ng-template>
+        <!---->
+        <mat-action-list>
+          <button mat-list-item matStepperNext *ngFor="let item of logGroups" (click)="selectLogGroup(item)">{{item}}</button>
+        </mat-action-list>
+        <!---->
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Logs Streams</ng-template>
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Logs</ng-template>
+      <p>Logs list</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <!--<button mat-button (click)="stepper.reset()">Reset</button>-->
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
