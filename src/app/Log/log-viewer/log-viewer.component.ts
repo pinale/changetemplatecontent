@@ -21,7 +21,7 @@ export class LogViewerComponent implements OnInit {
 
 
   @ViewChild('templateLogGroup') templateLogGroup : TemplateRef<any>;
-  @ViewChild('ciccio') pippo : ElementRef<any>;
+  @ViewChild('test') test : ElementRef<any>;
   
 
   constructor(private _formBuilder: FormBuilder, private cloudwatch :AwscloudwatchService, private sanitizer: DomSanitizer, private renderer: Renderer2,) {}
@@ -42,13 +42,13 @@ export class LogViewerComponent implements OnInit {
   selectLogGroup(item){
 
     let safeHtml: SafeHtml | string;
-    safeHtml = this.sanitizer.bypassSecurityTrustHtml("<strong>changed<strong>");  // "<strong>changed<strong>";
+    safeHtml = this.sanitizer.bypassSecurityTrustHtml("<strong>changed<strong>");  
     this.templateLogGroup.elementRef.nativeElement.innerHtml =  safeHtml;
   }
 
-  changealessio()
+  changeTest()
   {
-    this.renderer.setProperty(this.pippo.nativeElement, 'innerHtml', this.sanitizer.bypassSecurityTrustHtml("<strong>changed<strong>"));
-    console.log("PIPPO",this.pippo.nativeElement.innerHtml)
+    this.renderer.setProperty(this.test.nativeElement, 'innerHtml', this.sanitizer.bypassSecurityTrustHtml("<strong>changed<strong>"));
+    console.log("TEST",this.test.nativeElement.innerHtml)
   }
 }
